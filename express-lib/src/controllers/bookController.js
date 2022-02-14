@@ -56,10 +56,20 @@ exports.getBooks = async (req, res) => {
         });
 };
 
+exports.getBookById = async (req, res) => {
+    Book.findById(req.params.id)     //find product by id
+        .exec((err, result) => {
+            res.status(200).json({
+                msg: "OK",
+                data: result
+            });
+        });
+};
+
 exports.getBookByName = async (req, res) => {
     let bookName = req.params.bookName;
     Book.find({      
-        name: {
+        bookName: {
             $regex: new RegExp(bookName),
             $options: 'i'
         }
@@ -73,7 +83,7 @@ exports.getBookByName = async (req, res) => {
 };
 
 exports.deleteBook = async(req, res) => {
-    Book.findByIdAndDelete(req.params.id,book)
+    Book.findByIdAndDelete(req.params.id)
         .exec((err)=>{
             if(err){
                 res.status(500).json({

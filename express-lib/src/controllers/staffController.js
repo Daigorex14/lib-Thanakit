@@ -117,7 +117,7 @@ exports.updateStaff  = async (req,res)=>{
 };
 
 exports.deleteStaff = async(req, res) => {
-    Staff.findByIdAndDelete(req.params.id,staff)
+    Staff.findByIdAndDelete(req.params.id)
         .exec((err)=>{
             if(err){
                 res.status(500).json({

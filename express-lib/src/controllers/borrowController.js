@@ -67,8 +67,9 @@ exports.getBorrowDataByMember = async (req, res) => {
 exports.getBorrowDataByBook = async (req, res) => {
     let book_id = req.params.id;
     console.log(book_id);
-    Borrow.find({ "book.book_id": book_id })
+    Borrow.find({ "book.bookId": book_id })
         .exec((err, result) => {
+            console.log(result);
             res.status(200).json({
                 msg: "OK",
                 data: result

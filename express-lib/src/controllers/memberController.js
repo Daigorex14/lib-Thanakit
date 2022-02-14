@@ -82,7 +82,7 @@ exports.getMemberByName = async (req, res) => {
 };
 
 exports.deleteMember = async (req, res) => {
-    Member.findByIdAndDelete(req.params.id, member)
+    Member.findByIdAndDelete(req.params.id)
         .exec((err) => {
             if (err) {
                 res.status(500).json({
